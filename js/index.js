@@ -25,7 +25,7 @@ const nbCasesY = 15;
 
 var images;
 var imgLoad = 0;
-var scrImages = ["apple.png", "snakehead.png", "snakeAngle.png", "snakeAngle2.png", "snakeLine.png", "snakeLine2.png", "snakeLine3.png", "snakeRear.png"];
+var scrImages = ["apple.png", "snakeHead.png", "snakeAngle.png", "snakeAngle2.png", "snakeLine.png", "snakeLine2.png", "snakeLine3.png", "snakeRear.png"];
 
 var firstStart = true;
 var pause = true;
