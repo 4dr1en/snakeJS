@@ -1,0 +1,122 @@
+:root {
+    --case-size: 30px;
+    --nb-cases-x: 15;
+    --nb-cases-y: 15;
+    --widthGameWindows: calc(var(--case-size) * var(--nb-cases-x));
+    --heightGameWindows: calc(var(--case-size) * var(--nb-cases-y));
+}
+
+body, #gameWindows, div{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    height: 100vh;
+    min-height: var(--heightGameWindows);
+    
+    background: url("../img/background.png");
+}
+
+#gameContainer{
+    position: relative;
+        top: calc(45vh - var(--heightGameWindows) / 2);
+        left: calc(50vw - var(--widthGameWindows) / 2);
+    width: var(--widthGameWindows);
+    height: var(--heightGameWindows);
+    background: url("../img/background2.png");
+    border: 2px solid #5B3C11;
+    overflow: visible;
+}
+#gameWindows{
+    position: absolute;
+    z-index: 0;
+}
+#score{
+    position: absolute;
+        top: calc(46vh + var(--heightGameWindows) / 2);
+        left: calc(50vw - 120px);
+    width: 230px;
+    padding: 10px;
+    background-color: rgba(158, 168, 122, 0.7);
+    border-radius: 3px;
+    text-align: center;
+}
+#score p{
+    margin: 0;
+    text-align: center;
+    line-height: 1.5em;
+}
+
+.snakePart, .snakePart-head, .snakePart-rear, .apple{
+    position: fixed;
+    width: var(--case-size);
+    height: var(--case-size);
+}
+
+.apple{
+    background: url("../img/apple.png") no-repeat;
+}
+
+#allScreen{
+    position: absolute;
+    width: var(--widthGameWindows);
+    height: var(--heightGameWindows);
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+#allScreen h1{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 3rem;
+}
+#allScreen p{
+    margin-top: 20%;
+    font-size: 1.5rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#allScreen em{
+    padding: 0 5px 3px 5px;
+    color: black;
+    border: 1px solid #130E0A;
+    border-radius: 3px;
+	text-align: center;
+}
+#allScreen aside{
+    display: inline-block;
+    padding: 4rem 0 0 10%;
+    
+	text-align: left;
+}
+#allScreen aside p{
+	margin-top: 2%;
+}
+#allScreen .arrow{
+	display: inline-block;
+	box-sizing: border-box;
+	height: 3rem;
+	width: 3rem;
+	margin: 2px;
+	padding-top: 7px;
+	vertical-align: text-top;
+	font-style: normal;
+}
+#allScreen #haut{
+	position: relative;
+		bottom: calc(3rem + 2px);
+		right: calc(6rem + 8px);
+}
+#gameOver{
+    text-shadow: #0a4e0f 1px 1px 0px;
+}
+footer{
+    display: inline-block;
+    position: fixed;
+        bottom: 0;
+        right: 0;
+    font-size: 1.2rem;
+    color: darkslategrey;
+    padding-right: 3rem;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-style: italic;
+}
