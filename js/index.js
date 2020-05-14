@@ -34,7 +34,7 @@ var nbTargetsHit = 0;
 var targetCoordinates = [0, 0];
 var arrayPart = new Array();
 
-var lastImputexecuted = "ArrowUp";
+var lastInputexecuted = "ArrowUp";
 var arrayInput = ["ArrowUp"];
 
 loadingGame();
@@ -57,7 +57,7 @@ function init() {
     pause = true;
     nbTargetsHit = 0;
     arrayPart = new Array();
-    lastImputexecuted = "ArrowUp";
+    lastInputexecuted = "ArrowUp";
     arrayInput = ["ArrowUp"];
 
     arrayPart.push(new SnakePart(7, 9, SnakePart.top, SnakePart.rear, 0));
@@ -86,7 +86,7 @@ function gameLoop() {
     if (duration < 100) duration = 100;
 
     if (!pause) {
-        let inputDirection = lastImputexecuted;
+        let inputDirection = lastInputexecuted;
         if (arrayInput.length > 0) {
             let nbImput = arrayInput.length;
             //si la direction mène en sens inverse, on la supprime et on passe à la suivante
@@ -263,7 +263,7 @@ function event(e) {
 function positionRegistration(Destination) {
     /*mise a jour des variables de position
     et gestion des cibles*/
-    if (arrayInput.length > 0) lastImputexecuted = arrayInput[0];
+    if (arrayInput.length > 0) lastInputexecuted = arrayInput[0];
     arrayInput.shift();
 
     //gestion du suivie des tiles
@@ -338,10 +338,10 @@ function controlCell(x, y) {
 function goBackControl(direction) {
     /*test retour arrière
     renvoi false si un retour en arrière est détecté.*/
-    if (direction == "ArrowUp" && lastImputexecuted == "ArrowDown") return false;
-    else if (direction == "ArrowDown" && lastImputexecuted == "ArrowUp") return false;
-    else if (direction == "ArrowLeft" && lastImputexecuted == "ArrowRight") return false;
-    else if (direction == "ArrowRight" && lastImputexecuted == "ArrowLeft") return false;
+    if (direction == "ArrowUp" && lastInputexecuted == "ArrowDown") return false;
+    else if (direction == "ArrowDown" && lastInputexecuted == "ArrowUp") return false;
+    else if (direction == "ArrowLeft" && lastInputexecuted == "ArrowRight") return false;
+    else if (direction == "ArrowRight" && lastInputexecuted == "ArrowLeft") return false;
     else return true;
 }
 
