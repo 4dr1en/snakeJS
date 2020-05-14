@@ -25,7 +25,7 @@ const nbCasesY = 15;
 
 var images;
 var imgLoad = 0;
-var scrImages = ["apple.png", "snakeHead.png", "snakeAngle.png", "snakeAngle2.png", "snakeLine.png", "snakeLine2.png", "snakeLine3.png", "snakeRear.png"];
+var scrImages = ["apple.png", "snakehead.png", "snakeAngle.png", "snakeAngle2.png", "snakeLine.png", "snakeLine2.png", "snakeLine3.png", "snakeRear.png"];
 
 var firstStart = true;
 var pause = true;
@@ -35,7 +35,7 @@ var targetCoordinates = [0, 0];
 var arrayPart = new Array();
 
 var lastImputexecuted = "ArrowUp";
-var arrayImput = ["ArrowUp"];
+var arrayInput = ["ArrowUp"];
 
 loadingGame();
 
@@ -58,8 +58,7 @@ function init() {
     nbTargetsHit = 0;
     arrayPart = new Array();
     lastImputexecuted = "ArrowUp";
-    arrayImput = new Array();
-    arrayImput = ["ArrowUp"];
+    arrayInput = ["ArrowUp"];
 
     arrayPart.push(new SnakePart(7, 9, SnakePart.top, SnakePart.rear, 0));
     arrayPart.push(new SnakePart(7, 8, SnakePart.top, SnakePart.part, 1));
@@ -88,14 +87,14 @@ function gameLoop() {
 
     if (!pause) {
         let imputDirection = lastImputexecuted;
-        if (arrayImput.length > 0) {
-            let nbImput = arrayImput.length;
+        if (arrayInput.length > 0) {
+            let nbImput = arrayInput.length;
             //si la direction mène en sens inverse, on la supprime et on passe à la suivante
             for (let i = 0; i < nbImput; i++) {
-                if (goBackControl(arrayImput[0])) {
-                    imputDirection = arrayImput[0];
+                if (goBackControl(arrayInput[0])) {
+                    imputDirection = arrayInput[0];
                     break;
-                } else arrayImput.shift();
+                } else arrayInput.shift();
             }
         }
 
@@ -253,7 +252,7 @@ function event(e) {
     if (!e.repeat) {
         let keysSearch = ["ArrowUp", "ArrowRight", "ArrowDown", "ArrowLeft"];
         if (keysSearch.includes(e.key) && !pause) {
-            arrayImput.push(e.key);
+            arrayInput.push(e.key);
         } else if (e.key == " ") {
             e.preventDefault();
             pause = !pause;
@@ -264,13 +263,14 @@ function event(e) {
 function positionRegistration(Destination) {
     /*mise a jour des variables de position
     et gestion des cibles*/
-    if (arrayImput.length > 0) lastImputexecuted = arrayImput[0];
-    arrayImput.shift();
+    if (arrayInput.length > 0) lastImputexecuted = arrayInput[0];
+    arrayInput.shift();
 
     //gestion du suivie des tiles
     for (let i = arrayPart.length - 1; i > 0; i--) {
         arrayPart[i].tile = arrayPart[i - 1].tile;
     }
+	
     if (!controlTargetAcquired(Destination)) {
         arrayPart.shift(); //pas de suppresion si cible aquise
         arrayPart[0].tile = Math.floor((Math.random()) * 3); //détermine la tile suivante
