@@ -86,19 +86,19 @@ function gameLoop() {
     if (duration < 100) duration = 100;
 
     if (!pause) {
-        let imputDirection = lastImputexecuted;
+        let inputDirection = lastImputexecuted;
         if (arrayInput.length > 0) {
             let nbImput = arrayInput.length;
             //si la direction mène en sens inverse, on la supprime et on passe à la suivante
             for (let i = 0; i < nbImput; i++) {
                 if (goBackControl(arrayInput[0])) {
-                    imputDirection = arrayInput[0];
+                    inputDirection = arrayInput[0];
                     break;
                 } else arrayInput.shift();
             }
         }
 
-        let Destination = collisionControl(imputDirection);
+        let Destination = collisionControl(inputDirection);
         if (Destination) {
             setTimeout(gameLoop, duration); //asynchrome, mis en avant pour ne pas être tributaire du temps de traitement
 
@@ -281,14 +281,14 @@ function positionRegistration(Destination) {
     arrayPart[0].part = SnakePart.rear;
 }
 
-function collisionControl(imputDirection) {
+function collisionControl(inputDirection) {
     /* control des auto-collisions et sorties de cadre.
     entré: imput directionnel clavier
     sortie: false ou objet de destination */
 
     //détermine la direction et la case cible
     let Destination = new SnakePart();
-    switch (imputDirection) {
+    switch (inputDirection) {
         case "ArrowUp":
             Destination.x = arrayPart[arrayPart.length - 1].x;
             Destination.y = arrayPart[arrayPart.length - 1].y - 1;
